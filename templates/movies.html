@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>movie durations</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/movies.css') }}">
+    </head>
+
+    <body>
+        <h2>This Collection Belongs to {{ name }} </h2>
+        <!--the following url_for is ony for your understanding. dont include this in your projects-->
+
+        <table>
+            <tr>
+                <th> Movie Name </th>
+                <th> Duration </th>
+                <th> Comments </th>
+            </tr>
+
+            {% for movie, length in movies.items() %}
+                <tr>
+                    <td> {{ movie }} </td>
+                    <td> {{ length }} </td>
+                        {% if length <= 2 %}
+                            <td> short </td>
+                        {% elif length >= 2 and length <=3 %}
+                            <td> medium </td>
+                        {% else %}
+                            <td style="color: red">long</td>
+                        {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchable</title>
+</head>
+<body>
+    <h1> Movies to Watch</h1>
+    <h2>This collection belongs to {{ name }}</h2>
+    <ul>
+        <li>{{movies[0]}}</li>
+        <li>{{movies[1]}}</li>
+        <li>{{movies[2]}}</li>
+        <li>{{movies[3]}}</li>
+        <li>{{movies[4]}}</li>
+    </ul>
+    <hr>
+    <table>
+        <tr>
+            <th>Movie Name</th><th>Duration</th><th>Comment</th>
+        </tr>
+        {% for movie , length in movies.items()%}
+            <tr>
+                <td>{{movie}}</td>
+                <td> {{length}}</td>
+                <td>
+                    {% if length>3 %} long
+                    {% elif length>2 and length<=3 %} medium
+                    {% else %} short
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+</body>
+</html> -->
